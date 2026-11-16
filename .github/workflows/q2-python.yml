@@ -1,8 +1,15 @@
 name: Python
 
+on:
+  pull_request:
+    branches:
+      - develop
+    types:
+      - closed
 
 jobs:
   build:
+    if: github.event.pull_request.merged == true  
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -19,4 +26,7 @@ jobs:
 
       - name: Check
         run: python -m py_compile src/main.py
+
+      - name: Run Tests
+        run: pytest tests/
 
