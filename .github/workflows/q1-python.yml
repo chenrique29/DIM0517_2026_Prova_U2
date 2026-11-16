@@ -1,6 +1,14 @@
 name: Python
 
-
+on: 
+  push:
+    branches:
+      - 'feature/**'
+    paths:
+      - '**/src/**'
+      - '**/Dockerfile'
+      - '**/docker-compose*.yml'
+      - '**/requirements.txt' 
 jobs:
   build:
     runs-on: ubuntu-latest
